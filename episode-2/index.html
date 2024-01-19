@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #content {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <!-- Your main content goes here -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam nisi nec lacus blandit, in sagittis turpis pharetra.</p>
+    <!-- Add more content to see the dynamic footer positioning -->
+  </div>
+
+  <script>
+    function positionFooter() {
+      // Get the main content and footer elements
+      const content = document.getElementById('content');
+      const footer = document.querySelector('footer');
+
+      // Calculate the distance from the top based on content length
+      const contentHeight = content.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const footerHeight = footer.offsetHeight;
+
+      if (contentHeight + footerHeight < windowHeight) {
+        // If content + footer is less than the window height, position footer at the bottom
+        footer.style.position = 'absolute';
+        footer.style.bottom = '0';
+      } else {
+        // If content + footer is greater than the window height, let it be a static footer
+        footer.style.position = 'static';
+      }
+    }
+
+    // Call the function on initial page load and window resize
+    window.onload = positionFooter;
+    window.onresize = positionFooter;
+  </script>
+
+  <footer>
+    <!-- Your footer content goes here -->
+    <img src= "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Ffooter%2F&psig=AOvVaw1U24C0awOF_drAcPEOb0FD&ust=1705072167685000&source=images&cd=vfe&ved=0CBMQjRxqFwoTCOilpPjO1YMDFQAAAAAdAAAAABAE"  alt="Footer Image">
+  </footer>
+
+</body>
+</html>
